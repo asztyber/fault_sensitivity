@@ -17,7 +17,7 @@ def ResGen1_ex2(z,state,params,Ts):
 
     State is a dictionary with the keys: x2, x4
 
-    File generated Tue May  7 10:57:41 2024
+    File generated Tue May  7 15:49:02 2024
     """
     def ApproxInt(dx, x0, Ts):
         return x0 + Ts*dx

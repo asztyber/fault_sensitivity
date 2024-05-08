@@ -6,9 +6,9 @@ def approx_int(dx, x0, Ts=1):
 def approx_diff(x, xold, Ts=1):
     return (x - xold)/Ts
 
-class ResGen1(torch.nn.Module):
+class ResGen2(torch.nn.Module):
     def __init__(self):
-        super(ResGen1, self).__init__()
+        super(ResGen2, self).__init__()
         self.linear1 = torch.nn.Linear(2, 1)
         self.linear1.bias.data.fill_(0)
         self.linear1.weight.data.uniform_(-1, 1)
@@ -31,9 +31,9 @@ class ResGen1(torch.nn.Module):
         x = torch.tensor([x1[0][0], x2[0][0], x3])
         return x, r
 
-class ResGen2(torch.nn.Module):
+class ResGen3(torch.nn.Module):
     def __init__(self):
-        super(ResGen2, self).__init__()
+        super(ResGen3, self).__init__()
         self.linear1 = torch.nn.Linear(4, 1)
         self.linear1.bias.data.fill_(0)
         self.linear1.weight.data.uniform_(-1, 1)

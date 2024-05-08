@@ -1,7 +1,7 @@
 import numpy as np
 from numpy import * # For access to all fundamental functions, constants etc.
-def ResGen1_ex1(z,state,params,Ts):
-    """ RESGEN1_EX1 Sequential residual generator for model ''
+def Res(z,state,params,Ts):
+    """ RES Sequential residual generator for model ''
     Causality: mixed
 
     Structurally sensitive to faults: f1
@@ -13,11 +13,11 @@ def ResGen1_ex1(z,state,params,Ts):
     r = np.zeros(N) # N number of data points
     state = {'x1': x1_0, 'x3': x3_0}
     for k,zk in enumerate(z):
-        r[k], state = ResGen1_ex1( zk, state, params, Ts )
+        r[k], state = Res( zk, state, params, Ts )
 
     State is a dictionary with the keys: x1, x3
 
-    File generated Tue May  7 10:56:54 2024
+    File generated Wed May  8 11:46:12 2024
     """
     def ApproxInt(dx, x0, Ts):
         return x0 + Ts*dx
@@ -25,7 +25,7 @@ def ResGen1_ex1(z,state,params,Ts):
     def ApproxDiff(x, xold, Ts):
         return (x - xold) / Ts
 
-    def ResGen1_ex1_core(z, state, params, Ts):
+    def Res_core(z, state, params, Ts):
         # Known signals
         y1 = z[0]
         y3 = z[1]
@@ -38,7 +38,7 @@ def ResGen1_ex1(z,state,params,Ts):
         # Residual generator body
         x3 = y3 # e5
         dx3 = ApproxDiff(x3, state['x3'], Ts) # e8
-        x2 = 10.0*dx3 + 2.0*x3 # e3
+        x2 = 7.14285714285714*dx3 + 1.42857142857143*x3 # e3
         dx1 = u - 0.2*x1 - 0.1*x2 # e1
          
         r = x1 - y1 # e4
@@ -52,4 +52,4 @@ def ResGen1_ex1(z,state,params,Ts):
 
         return (r, state)
 
-    return ResGen1_ex1_core(z, state, params, Ts)
+    return Res_core(z, state, params, Ts)
