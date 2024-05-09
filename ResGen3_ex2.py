@@ -1,7 +1,7 @@
 import numpy as np
 from numpy import * # For access to all fundamental functions, constants etc.
-def ResGen1_ex2(z,state,params,Ts):
-    """ RESGEN1_EX2 Sequential residual generator for model ''
+def ResGen3_ex2(z,state,params,Ts):
+    """ RESGEN3_EX2 Sequential residual generator for model ''
     Causality: int
 
     Structurally sensitive to faults: f2
@@ -13,16 +13,16 @@ def ResGen1_ex2(z,state,params,Ts):
     r = np.zeros(N) # N number of data points
     state = {'x2': x2_0, 'x4': x4_0}
     for k,zk in enumerate(z):
-        r[k], state = ResGen1_ex2( zk, state, params, Ts )
+        r[k], state = ResGen3_ex2( zk, state, params, Ts )
 
     State is a dictionary with the keys: x2, x4
 
-    File generated Thu May  9 11:06:07 2024
+    File generated Thu May  9 11:06:13 2024
     """
     def ApproxInt(dx, x0, Ts):
         return x0 + Ts*dx
 
-    def ResGen1_ex2_core(z, state, params, Ts):
+    def ResGen3_ex2_core(z, state, params, Ts):
         # Known signals
         y3 = z[0]
         u = z[2]
@@ -48,4 +48,4 @@ def ResGen1_ex2(z,state,params,Ts):
 
         return (r, state)
 
-    return ResGen1_ex2_core(z, state, params, Ts)
+    return ResGen3_ex2_core(z, state, params, Ts)
